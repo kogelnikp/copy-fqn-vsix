@@ -5,14 +5,11 @@ using Microsoft.CodeAnalysis.Text;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using System;
 using System.ComponentModel.Design;
-using System.Globalization;
-using System.Threading;
 using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
@@ -65,11 +62,11 @@ namespace KogelnikP.CopyFQN
         /// <param name="e"></param>
         private void MenuItem_BeforeQueryStatus(object sender, EventArgs e)
         {
-            OleMenuCommand command;
-            if ((command = sender as OleMenuCommand) != null)
+            if (sender is OleMenuCommand command)
             {
                 command.Visible = false;
-                ThreadHelper.JoinableTaskFactory.Run(async delegate {
+                ThreadHelper.JoinableTaskFactory.Run(async delegate
+                {
                     (var node, var document) = await GetCurrentTokenAndDocumentAsync();
                     command.Visible = IsSyntaxNodeSupported(node);
                 });
@@ -150,7 +147,7 @@ namespace KogelnikP.CopyFQN
 
 
         /// <summary>
-        /// 
+        /// Retrieves 
         /// </summary>
         /// <returns></returns>
         private async Task<(SyntaxNode, Document)> GetCurrentTokenAndDocumentAsync()
@@ -164,7 +161,7 @@ namespace KogelnikP.CopyFQN
 
 
         /// <summary>
-        /// 
+        /// Gets the current editor view
         /// </summary>
         /// <returns></returns>
         private IWpfTextView GetTextView()
@@ -173,14 +170,13 @@ namespace KogelnikP.CopyFQN
                 (IVsTextManager)ServiceProvider.GetService(
                     typeof(SVsTextManager));
             Assumes.Present(textManager);
-            IVsTextView textView;
-            textManager.GetActiveView(1, null, out textView);
+            textManager.GetActiveView(1, null, out IVsTextView textView);
             return (GetEditorAdaptersFactoryService()).GetWpfTextView(textView);
         }
 
 
         /// <summary>
-        /// 
+        /// Gets the EditorAdaptersFactoryService
         /// </summary>
         /// <returns></returns>
         private IVsEditorAdaptersFactoryService GetEditorAdaptersFactoryService()
