@@ -88,7 +88,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\CopyFQNCommand.png" />
+    <Content Include="Resources\CopyFQNCommand.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\CopyFQNCommandPackage.ico" />
   </ItemGroup>
   <ItemGroup>

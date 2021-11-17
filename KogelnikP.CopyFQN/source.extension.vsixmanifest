@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="KogelnikP.CopyFQN.5a4723cd-6fe1-418f-b34f-154b68c35437" Version="1.0" Language="en-US" Publisher="Philipp Kogelnik" />
+        <Identity Id="KogelnikP.CopyFQN.5a4723cd-6fe1-418f-b34f-154b68c35437" Version="0.1" Language="en-US" Publisher="Philipp Kogelnik" />
         <DisplayName>KogelnikP.CopyFQN</DisplayName>
-        <Description xml:space="preserve">Copy fully qualified names of classes to clipboard</Description>
+        <Description xml:space="preserve">Copy fully qualified names to clipboard</Description>
+        <Icon>Resources\CopyFQNCommand.png</Icon>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
